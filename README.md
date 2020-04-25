@@ -330,5 +330,7 @@ MODE_STREAM 模式输出音频的方式如下：
 ```
 ### 4.3 AudioTrack构造过程
 每一个音频流对应着一个AudioTrack类的一个实例，每个AudioTrack会在创建时注册到 AudioFlinger中，由AudioFlinger把所有的AudioTrack进行混合（Mixer），然后输送到AudioHardware中进行播放，目前Android同时最多可以创建32个音频流，也就是说，Mixer最多会同时处理32个AudioTrack的数据流。 
+![image](https://github.com/wys919591169/MediaTest/blob/master/image/audio_track.png.png)  
+
 
 参考https://www.cnblogs.com/renhui/p/7452572.html
