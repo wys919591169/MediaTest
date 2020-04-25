@@ -3,9 +3,8 @@ package com.wys.mediatest
 import android.Manifest.permission.RECORD_AUDIO
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
 import android.content.pm.PackageManager
-import android.media.AudioFormat
-import android.media.AudioRecord
-import android.media.MediaRecorder
+import android.media.*
+import android.os.AsyncTask
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment.DIRECTORY_MUSIC
@@ -14,19 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_sound_recording.*
-import android.media.AudioManager
-import android.media.AudioTrack
-import android.media.AudioAttributes
-import android.os.AsyncTask
-import android.os.Environment
-import android.widget.Button
 import java.io.*
-import android.R.attr.track
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-
-
 
 
 /**
@@ -100,8 +87,8 @@ class SoundActivity : AppCompatActivity() {
 
             if (btn_play.text == "播放") {
             btn_play.text = "停止播放"
-                playInModeStream()
-                //playInModeStatic();
+                //playInModeStream()
+                playInModeStatic();
             } else {
                 btn_play.text = "播放"
                 stopPlay()
@@ -254,30 +241,29 @@ class SoundActivity : AppCompatActivity() {
     private fun playInModeStatic() {
         // static模式，需要将音频数据一次性write到AudioTrack的内部缓冲区
 
-        object : AsyncTask<Void, Void, Void>() {
-            override fun doInBackground(vararg params: Void): Void? {
+        object : AsyncTask<Void?, Void?, Void?>() {
+            override fun doInBackground(vararg params: Void?): Void? {
                 try {
                     val `in` = resources.openRawResource(R.raw.ding)
-                    try {
+                    `in`.use { `in` ->
                         val out = ByteArrayOutputStream()
-                        var b: Int
-                        while ( `in`.read() != -1) {
-                            out.write(`in`.read())
-                        }
+                        var b: Int?
+                        do {
+                            b = `in`.read()
+                            if (b==-1){
+                                break
+                            }
+                            out.write(b)
+                        }while (true)
                         Log.d(TAG, "Got the data")
                         audioData = out.toByteArray()
-                    } finally {
-                        `in`.close()
                     }
                 } catch (e: IOException) {
                     Log.wtf(TAG, "Failed to read", e)
                 }
-
                 return null
             }
-
-
-            override fun onPostExecute(v: Void) {
+            override fun onPostExecute(v: Void?) {
                 Log.i(TAG, "Creating track...audioData.length = " + audioData!!.size)
 
                 // R.raw.ding铃声文件的相关属性为 22050Hz, 8-bit, Mono
@@ -295,7 +281,7 @@ class SoundActivity : AppCompatActivity() {
                     AudioManager.AUDIO_SESSION_ID_GENERATE
                 )
                 Log.d(TAG, "Writing audio data...")
-                audioData?.let { audioTrack!!.write(it, 0, audioData!!.size) }
+                audioTrack!!.write(audioData!!, 0, audioData!!.size)
                 Log.d(TAG, "Starting playback")
                 audioTrack!!.play()
                 Log.d(TAG, "Playing")
