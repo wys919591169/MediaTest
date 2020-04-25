@@ -1,5 +1,5 @@
 # MediaTest
-音视频学习之初级之路
+# 音视频学习之初级入门篇
 ## 一、AudioRecord API详解
 AudioRecord是Android系统提供的用于实现录音的功能类。
 
