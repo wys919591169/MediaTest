@@ -3,7 +3,6 @@ package com.wys.mediatest.media
 import android.media.MediaCodec
 import android.media.MediaFormat
 import android.util.Log
-import com.wys.app.media.*
 import java.io.File
 import java.nio.ByteBuffer
 

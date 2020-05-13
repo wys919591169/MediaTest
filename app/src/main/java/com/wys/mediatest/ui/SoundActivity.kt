@@ -2,6 +2,7 @@ package com.wys.mediatest.ui
 
 import android.Manifest.permission.RECORD_AUDIO
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.media.*
 import android.os.AsyncTask
@@ -55,14 +56,14 @@ class SoundActivity : AppCompatActivity() {
     /**
      * 被用户拒绝的权限列表
      */
-    private val mPermissionList: Array<String> = arrayOf()
+    private val mPermissionList: MutableList<String> = mutableListOf()
     private var audioTrack: AudioTrack? = null
     private var audioData: ByteArray? = null
     private var fileInputStream: FileInputStream? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sound_recording)
-        //checkPermissions()
+        checkPermissions()
 
         btn_sound.setOnClickListener {
             if (btn_sound.text == "开始录音") {
@@ -93,8 +94,8 @@ class SoundActivity : AppCompatActivity() {
 
             if (btn_play.text == "播放") {
             btn_play.text = "停止播放"
-                //playInModeStream()
-                playInModeStatic();
+                playInModeStream()
+                //playInModeStatic();
             } else {
                 btn_play.text = "播放"
                 stopPlay()
@@ -173,12 +174,13 @@ class SoundActivity : AppCompatActivity() {
                         permissions[i]
                     ) != PackageManager.PERMISSION_GRANTED
                 ) {
-                    mPermissionList.plus(permissions[i])
+                    mPermissionList.add(permissions[i])
                 }
             }
             if (mPermissionList.isNotEmpty()) {
 
-                ActivityCompat.requestPermissions(this, mPermissionList, MY_PERMISSIONS_REQUEST)
+                ActivityCompat.requestPermissions(this,
+                    mPermissionList.toTypedArray(), MY_PERMISSIONS_REQUEST)
             }
         }
     }
