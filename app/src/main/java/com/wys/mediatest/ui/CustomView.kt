@@ -1,4 +1,4 @@
-package com.wys.mediatest
+package com.wys.mediatest.ui
 
 import android.content.Context
 import android.view.View
@@ -7,6 +7,7 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
+import com.wys.mediatest.R
 
 
 /**
@@ -24,7 +25,9 @@ class CustomView @JvmOverloads constructor(context: Context, attrs: AttributeSet
         paint.isAntiAlias = true
         paint.style = Paint.Style.STROKE
         bitmap =
-            BitmapFactory.decodeResource(resources,R.mipmap.pic)  // 获取bitmap
+            BitmapFactory.decodeResource(resources,
+                R.mipmap.pic
+            )  // 获取bitmap
     }
 
     override fun onDraw(canvas: Canvas) {

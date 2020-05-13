@@ -1,4 +1,4 @@
-package com.wys.mediatest
+package com.wys.mediatest.media
 
 import android.media.AudioFormat
 import android.media.AudioRecord

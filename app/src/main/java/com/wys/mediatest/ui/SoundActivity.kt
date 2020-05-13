@@ -1,4 +1,4 @@
-package com.wys.mediatest
+package com.wys.mediatest.ui
 
 import android.Manifest.permission.RECORD_AUDIO
 import android.Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -12,6 +12,8 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.wys.mediatest.R
+import com.wys.mediatest.media.PcmToWavUtil
 import kotlinx.android.synthetic.main.activity_sound_recording.*
 import java.io.*
 
@@ -72,7 +74,11 @@ class SoundActivity : AppCompatActivity() {
             }
         }
         btn_convert.setOnClickListener {
-            val pcmToWavUtil = PcmToWavUtil(SAMPLE_RATE_INHZ, CHANNEL_CONFIG, AUDIO_FORMAT)
+            val pcmToWavUtil = PcmToWavUtil(
+                SAMPLE_RATE_INHZ,
+                CHANNEL_CONFIG,
+                AUDIO_FORMAT
+            )
             val pcmFile = File(getExternalFilesDir(DIRECTORY_MUSIC), "test.pcm")
             val wavFile = File(getExternalFilesDir(DIRECTORY_MUSIC), "test.wav")
             if (!wavFile.mkdirs()) {
