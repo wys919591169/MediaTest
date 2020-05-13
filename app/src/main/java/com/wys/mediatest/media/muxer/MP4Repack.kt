@@ -4,7 +4,6 @@ import android.media.MediaCodec
 import android.util.Log
 import com.wys.mediatest.media.extractor.AudioExtractor
 import com.wys.mediatest.media.extractor.VideoExtractor
-import com.wys.mediatest.media.muxer.MMuxer
 import java.nio.ByteBuffer
 
 

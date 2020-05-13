@@ -37,6 +37,7 @@ class MMExtractor(path: String?) {
 
     init {
         mExtractor = MediaExtractor()
+        //android-29的包会报错，切记
         path?.let { mExtractor?.setDataSource(it) }
     }
 
