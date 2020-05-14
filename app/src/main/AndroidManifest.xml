@@ -23,6 +23,7 @@
         </activity>
         <activity android:name=".ui.SoundActivity"/>
         <activity android:name=".ui.SimplePlayerActivity"/>
+        <activity android:name=".ui.SimpleRenderActivity"/>
     </application>
 
 </manifest>

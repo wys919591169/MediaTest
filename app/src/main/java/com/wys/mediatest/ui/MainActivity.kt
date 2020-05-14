@@ -23,4 +23,9 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(baseContext, SimplePlayerActivity::class.java))
 
     }
+
+    fun clickToSimpleRender(view: View) {
+        startActivity(Intent(baseContext, SimpleRenderActivity::class.java))
+
+    }
 }
