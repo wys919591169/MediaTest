@@ -25,7 +25,14 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun clickToSimpleRender(view: View) {
-        startActivity(Intent(baseContext, SimpleRenderActivity::class.java))
+        val intent = Intent(this, SimpleRenderActivity::class.java)
+        intent.putExtra("type", 0)
+        startActivity(intent)
+    }
 
+    fun clickToSimplePic(view: View) {
+        val intent = Intent(this, SimpleRenderActivity::class.java)
+        intent.putExtra("type", 1)
+        startActivity(intent)
     }
 }
