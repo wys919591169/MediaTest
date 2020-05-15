@@ -35,4 +35,11 @@
         android:text="opengl渲染简单纹理贴图"
         android:onClick="clickToSimplePic"
         />
+    <Button
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="opengl渲染视频"
+        android:onClick="clickToVideo"
+        />
 </LinearLayout>
