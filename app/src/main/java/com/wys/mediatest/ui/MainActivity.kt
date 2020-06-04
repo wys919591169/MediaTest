@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun clickToVideo(view: View) {
+        startActivity(Intent(baseContext, OpenGLPlayerActivity::class.java))
 
     }
 }

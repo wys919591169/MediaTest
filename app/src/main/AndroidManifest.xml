@@ -24,6 +24,7 @@
         <activity android:name=".ui.SoundActivity"/>
         <activity android:name=".ui.SimplePlayerActivity"/>
         <activity android:name=".ui.SimpleRenderActivity"/>
+        <activity android:name=".ui.OpenGLPlayerActivity"/>
     </application>
 
 </manifest>
