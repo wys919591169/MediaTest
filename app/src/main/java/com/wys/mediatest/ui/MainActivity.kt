@@ -36,5 +36,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun clickToVideo(view: View) {}
+    fun clickToVideo(view: View) {
+
+    }
 }
