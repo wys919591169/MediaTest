@@ -40,4 +40,8 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(baseContext, OpenGLPlayerActivity::class.java))
 
     }
+
+    fun clickToTwoVideo(view: View) {
+        startActivity(Intent(baseContext, OpenGLPlayersActivity::class.java))
+    }
 }

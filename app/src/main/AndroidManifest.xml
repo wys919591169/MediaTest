@@ -25,6 +25,7 @@
         <activity android:name=".ui.SimplePlayerActivity"/>
         <activity android:name=".ui.SimpleRenderActivity"/>
         <activity android:name=".ui.OpenGLPlayerActivity"/>
+        <activity android:name=".ui.OpenGLPlayersActivity"/>
     </application>
 
 </manifest>

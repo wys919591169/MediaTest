@@ -38,7 +38,7 @@ class OpenGLPlayerActivity : AppCompatActivity() {
 
     private fun initRender() {
         drawer = VideoDrawer()
-        drawer.setVideoSize(1920, 1080)
+        drawer.setVideoSize(500, 960)
         drawer.getSurfaceTexture {
             initPlayer(Surface(it))
         }
