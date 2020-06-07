@@ -104,11 +104,13 @@ class SoundActivity : AppCompatActivity() {
     }
 
     fun startRecord() {
+        //创建AudioRecord对象
         recordBufSize = AudioRecord.getMinBufferSize(SAMPLE_RATE_INHZ, CHANNEL_CONFIG, AUDIO_FORMAT)
         audioRecord = AudioRecord(
             MediaRecorder.AudioSource.MIC, SAMPLE_RATE_INHZ,
             CHANNEL_CONFIG, AUDIO_FORMAT, recordBufSize
         )
+        //初始化buffer
         val data = ByteArray(recordBufSize)
         val file = File(getExternalFilesDir(DIRECTORY_MUSIC), "test.pcm")
         if (!file.mkdirs()) {
@@ -117,11 +119,11 @@ class SoundActivity : AppCompatActivity() {
         if (file.exists()) {
             file.delete()
         }
+        //开始录音
         audioRecord!!.startRecording()
         isRecording = true
 
-        // TODO: 2018/3/10 pcm数据无法直接播放，保存为WAV格式。
-
+        //写入文件
         Thread(Runnable {
             var os: FileOutputStream? = null
             try {
@@ -155,6 +157,7 @@ class SoundActivity : AppCompatActivity() {
     }
 
     fun stopRecord() {
+        //修改录音标志位
         isRecording = false
         // 释放资源
         if (null != audioRecord) {

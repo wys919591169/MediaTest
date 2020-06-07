@@ -49,4 +49,11 @@
         android:text="opengl渲染多个视频"
         android:onClick="clickToTwoVideo"
         />
+    <Button
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="egl"
+        android:onClick="clickToEgl"
+        />
 </LinearLayout>
