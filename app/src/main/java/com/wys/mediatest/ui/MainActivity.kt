@@ -49,4 +49,9 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(baseContext, EGLPlayerActivity::class.java))
 
     }
+
+    fun clickToFBO(view: View) {
+        startActivity(Intent(baseContext, FBOPlayerActivity::class.java))
+
+    }
 }

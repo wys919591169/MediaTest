@@ -27,6 +27,7 @@
         <activity android:name=".ui.OpenGLPlayerActivity"/>
         <activity android:name=".ui.OpenGLPlayersActivity"/>
         <activity android:name=".ui.EGLPlayerActivity"/>
+        <activity android:name=".ui.FBOPlayerActivity"/>
     </application>
 
 </manifest>

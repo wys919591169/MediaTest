@@ -56,4 +56,11 @@
         android:text="egl"
         android:onClick="clickToEgl"
         />
+    <Button
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="FBO实现“灵魂出窍”"
+        android:onClick="clickToFBO"
+        />
 </LinearLayout>
