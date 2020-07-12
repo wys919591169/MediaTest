@@ -55,7 +55,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    fun clickToCode(view: View) {
+    fun clickToByte(view: View) {
         startActivity(Intent(baseContext, SynthesizerActivity::class.java))
 
     }

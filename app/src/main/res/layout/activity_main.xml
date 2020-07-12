@@ -67,7 +67,7 @@
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="硬编码”"
-        android:onClick="clickToCode"
+        android:text="视频编码"
+        android:onClick="clickToByte"
         />
 </LinearLayout>

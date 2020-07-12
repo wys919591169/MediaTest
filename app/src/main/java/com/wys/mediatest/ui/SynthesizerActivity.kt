@@ -5,6 +5,7 @@ import android.os.Environment
 import android.view.Surface
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+
 import com.wys.mediatest.R
 import com.wys.mediatest.media.BaseDecoder
 import com.wys.mediatest.media.Frame
@@ -22,15 +23,18 @@ import com.wys.mediatest.opengl.egl.CustomerGLRenderer
 import kotlinx.android.synthetic.main.activity_synthesizer.*
 import java.util.concurrent.Executors
 
+
 /**
- *  author : wys
- *  date : 2020/7/12 15:37
- *  description :
+ * 合成器页面
+ *
+ * @author Chen Xiaoping (562818444@qq.com)
+ * @since LearningVideo
+ * @version LearningVideo
+ *
  */
 class SynthesizerActivity: AppCompatActivity(), MMuxer.IMuxerStateListener {
 
-    private val path = Environment.getExternalStorageDirectory().absolutePath + "/mvtest_2.mp4"
-    private val path2 = Environment.getExternalStorageDirectory().absolutePath + "/mvtest.mp4"
+    private val path = Environment.getExternalStorageDirectory().absolutePath + "/yinshiping/mvtest.mp4"
 
     private val threadPool = Executors.newFixedThreadPool(10)
 
@@ -82,7 +86,7 @@ class SynthesizerActivity: AppCompatActivity(), MMuxer.IMuxerStateListener {
     }
 
     private fun initVideo() {
-        val drawer = VideoDrawer()
+        val drawer = VideoDrawer() // SoulVideoDrawer()
         drawer.setVideoSize(1920, 1080)
         drawer.getSurfaceTexture {
             initVideoDecoder(path, Surface(it))
@@ -129,7 +133,6 @@ class SynthesizerActivity: AppCompatActivity(), MMuxer.IMuxerStateListener {
     }
 
     override fun onMuxerFinish() {
-
         runOnUiThread {
             btn.isEnabled = true
             btn.text = "编码完成"
