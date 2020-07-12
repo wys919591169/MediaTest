@@ -54,4 +54,9 @@ class MainActivity : AppCompatActivity() {
         startActivity(Intent(baseContext, FBOPlayerActivity::class.java))
 
     }
+
+    fun clickToCode(view: View) {
+        startActivity(Intent(baseContext, SynthesizerActivity::class.java))
+
+    }
 }
